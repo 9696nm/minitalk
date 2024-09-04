@@ -6,7 +6,7 @@
 #    By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 18:46:16 by hmori             #+#    #+#              #
-#    Updated: 2024/08/19 04:10:52 by hana/hmori       ###   ########.fr        #
+#    Updated: 2024/08/29 22:29:17 by hana/hmori       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,13 @@ TARGET = $(OBJ_FILES)
 endif
 
 $(NAME): $(TARGET)
-	@ar rcs $@ $^
+	ar rcs $@ $^
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_OBJ)
 	@$(MAKE) ALT=1 all

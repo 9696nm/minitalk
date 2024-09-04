@@ -1,0 +1,21 @@
+
+signalとはなにか 使う関数とか広く薄く
+	https://zenn.dev/hosu/articles/500079bf9be5fa
+	https://en-junior.com/sigaction-signal/
+もう少し詳しく
+	https://qiita.com/Kernel_OGSun/items/e96cef5487e25517a576
+
+実践編 動かして理解する
+	https://qiita.com/keitean/items/c641b3e158e01dacb7f6
+
+シグナル系関数まとめ
+	https://qiita.com/keitean/items/00600696a5d55623b3bd
+
+signal送信元はどこ？
+	https://qiita.com/takeoverjp/items/08978c6c4fe9234c148b
+
+シグナルハンドラにprintf()を書いてはいけない
+	https://qiita.com/rarul/items/090920b850acc4b7e910
+
+Unicodeとは？
+	https://note.com/hovinci/n/nb9e949979fdf
