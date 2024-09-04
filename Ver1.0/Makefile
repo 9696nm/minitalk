@@ -6,14 +6,12 @@
 #    By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 17:17:12 by hmori             #+#    #+#              #
-#    Updated: 2024/09/04 17:15:46 by hana/hmori       ###   ########.fr        #
+#    Updated: 2024/09/04 18:14:14 by hana/hmori       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-
-LEAK = -fsanitize=leak
 
 CRIENT_SRC_FILES = client.c
 SERVER_SRC_FILES = server.c
@@ -33,16 +31,16 @@ SERVER = server
 all: $(LIBFT) $(CLIENT) $(SERVER)
 
 $(CLIENT): $(CLIENT_OBJS) $(LIBFTA)
-	$(CC) $(CFLAGS) $(LEAK) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 $(SERVER): $(SERVER_OBJS) $(LIBFTA)
-	$(CC) $(CFLAGS) $(LEAK) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(LEAK) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT):
 	@make -C libft/ bonus

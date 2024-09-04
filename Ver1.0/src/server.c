@@ -6,7 +6,7 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:36:58 by hana/hmori        #+#    #+#             */
-/*   Updated: 2024/09/04 17:18:51 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2024/09/04 19:19:03 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(void)
 	{
 		if (g_stor[COUNT] == 0)
 			pause();
-		if (usleep(200) == 0)
+		if (usleep(100) == 0)
 		{
 			if (g_stor[COUNT] == 8)
 				kill(g_stor[PID], COMM_SUC);
@@ -81,6 +81,9 @@ int	main(void)
 // 	ft_putnbr_fd(g_stor[COUNT], g_stor[3]);
 // 	ft_putchar_fd(':', g_stor[3]);
 // 	ft_putbit(g_stor[BIT], sizeof(g_stor[BIT]));
+// 	return ;
+// 	if (ucontext == NULL)
+// 		return ;
 // }
 
 // static void	receipt(void)
