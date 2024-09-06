@@ -6,7 +6,7 @@
 #    By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 17:17:12 by hmori             #+#    #+#              #
-#    Updated: 2024/09/04 18:14:14 by hana/hmori       ###   ########.fr        #
+#    Updated: 2024/09/06 01:13:41 by hana/hmori       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 
 $(LIBFT):
 	@make -C libft/ bonus
+
+bonus: all
 
 clean:
 	@make -C libft/ clean
