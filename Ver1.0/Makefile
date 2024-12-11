@@ -53,7 +53,7 @@ clean:
 
 fclean: clean
 	@make -C libft/ fclean
-	@rm -f $(NAME)
+	@rm -f $(CLIENT) $(SERVER)
 
 re: fclean all
 

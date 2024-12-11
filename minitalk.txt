@@ -19,3 +19,37 @@ signal送信元はどこ？
 
 Unicodeとは？
 	https://note.com/hovinci/n/nb9e949979fdf
+
+
+server
+	空きシグナルSIGUSR1,2をセットアップ
+
+	環境変数で
+		・signalが送られた回数
+		・送られた文字列(bitで管理)
+		・送られた相手のプロセスID
+	を管理している
+
+client
+	環境変数
+		・返信がerrorかどうか管理用に使用
+
+処理のチャート
+	1.serverの起動
+	->受信まで待機　g_stor[COUNT]で送られたbit数を監視している
+
+	2.clientの起動
+	->1byte分を2進数に変換し頭から10us毎に送信
+
+	3.serverの受信
+	->1bitにつき100us待ち問題なく8bit受信できればclientに成功の信号を送信　g_stor[COUNT]を初期化
+	->100us待っても8bit分受信できないない場合は受信失敗の信号を送る　g_stor[COUNT]を初期化
+	
+	4.clientの処理
+	->1byte分送信したあとserverから成功が帰ってきたのならば次の1byteに移行し(->2)また最後まで送信した場合はsccuseを出力し(return (0))
+	->失敗が帰ってきた場合はbit抜けがあったと判断しtimeoutを出力した後再度送信を行い(->2)
+	->送信後500us経っても返答がなかった場合
+		・相手が存在しない
+		・落ちている
+		・sleep時間に問題がある
+		としてエラー表示を出した後タスクを終了(return (-1))
