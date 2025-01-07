@@ -28,7 +28,8 @@ sig_atomic_t型って？
 
 
 test case
-	$(python -c "print('a1b2c3d4e5' * 10000)")
+				ft_putstr_fd("Client error.\n", STDOUT_FILENO);
+
 
 Ver1.0 
 	改善すべき点

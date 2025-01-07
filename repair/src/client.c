@@ -6,7 +6,7 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:23:38 by hana/hmori        #+#    #+#             */
-/*   Updated: 2024/12/26 14:22:18 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/07 17:26:13 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	tobit(pid_t pid, char num)
 	sizeof_type = 8;
 	while (sizeof_type--)
 	{
-		usleep(20);
+		usleep(70);
 		if (num >> sizeof_type & BIT_ON)
 			kill(pid, SIGUSR2);
 		else
@@ -36,15 +36,25 @@ static void	tobit(pid_t pid, char num)
 
 static void	signalup(pid_t pid, char *str)
 {
-	while (usleep(500) == 0 && g_sig_state == COMM_ERR)
+	int	retry;
+
+	retry = 0;
+	while (*str)
 	{
-		if (*str)
-			tobit(pid, *str);
+		tobit(pid, *str);
+		if (usleep(500) && g_sig_state == COMM_SUC)
+		{
+			str++;
+			retry = 0;
+		}
 		else
-			tobit(pid, SIG_END);
+		{
+			ft_putstr_fd("retey\n", STDOUT_FILENO);
+			retry++;
+		}
 		if (SIG_RETRY < retry)
 		{
-			ft_putstr_fd("Server error.", STDOUT_FILENO);
+			ft_putstr_fd("Client error.\n", STDOUT_FILENO);
 			exit(EXIT_FAILURE);
 		}
 	}
