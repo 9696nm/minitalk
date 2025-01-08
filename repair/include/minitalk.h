@@ -6,7 +6,7 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:24:08 by hana/hmori        #+#    #+#             */
-/*   Updated: 2025/01/07 17:32:11 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/07 21:42:10 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct s_packet
 
 typedef enum e_signal_command
 {
-	SIG_RETRY = 3,
-	SIG_END = 0xFF
+	SIG_RETRY = 3
 }	t_sigcmd;
 
 typedef enum e_bit_state

@@ -6,7 +6,7 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:36:58 by hana/hmori        #+#    #+#             */
-/*   Updated: 2025/01/07 17:48:20 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/07 22:27:18 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	reception(void)
 {
 	if (g_stor.pid == 0)
 		pause();
-	if (usleep(200) == 0)
+	if (usleep(150) == 0)
 	{
 		g_stor.atompacket = 0;
 		if (g_stor.recv_count == 0)
@@ -163,9 +163,3 @@ int	main(void)
 // 	close(g_stor.log_fd);
 // 	return (0);
 // }
-
-	// buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	// if (buffer == NULL)
-	// 	return (0);
-
-	// free(buffer);
