@@ -30,14 +30,11 @@ int	main(void)
 {
 	int	i;
 
-	ft_putstr_fd(ft_itoa(getpid()), STDOUT_FILENO);
-	signal(SIGUSR1, signal_handler);
-	i = 0b01001;
-	if (sleep(20))
-		ft_putstr_fd("chancel", 1);
-	else
-		ft_putbit(i, sizeof(uint8_t));
-	// printf("%d\n", i >> 1 & 1);
+	ft_putbit('U', sizeof(uint8_t));
+	ft_putbit('e', sizeof(uint8_t));
+	ft_putbit('Y', sizeof(uint8_t));
+	ft_putbit('S', sizeof(uint8_t));
+	ft_putbit('V', sizeof(uint8_t));
 	return (0);
 }
 

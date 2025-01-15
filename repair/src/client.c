@@ -26,7 +26,7 @@ static void	tobit(pid_t pid, char num)
 	sizeof_type = 8;
 	while (sizeof_type--)
 	{
-		usleep(75);
+		usleep(SEND_DERAY);
 		if (num >> sizeof_type & BIT_ON)
 			kill(pid, SIGUSR2);
 		else

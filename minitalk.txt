@@ -26,6 +26,10 @@ Unicodeとは？
 sig_atomic_t型って？
 	https://qiita.com/come/items/3ac3633071a51bd6f6f0
 
+その他メモ
+	pid_tがVScodeで認識されない
+		https://qiita.com/zeek0x/items/dcb31bcab489eee1c465
+
 
 test case
 				ft_putstr_fd("Client error.\n", STDOUT_FILENO);

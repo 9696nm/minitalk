@@ -12,7 +12,7 @@
 
 #include "../include/minitalk.h"
 
-static unsigned int	g_stor[3];
+static volatile sig_atomic_t	g_stor[3];
 
 static void	signal_handler(int signum, siginfo_t *info, void *ucontext)
 {
@@ -46,7 +46,7 @@ int	main(void)
 	{
 		if (g_stor[COUNT] == 0)
 			pause();
-		if (usleep(100) == 0)
+		if (usleep(1500) == 0)
 		{
 			if (g_stor[COUNT] == 8)
 				kill(g_stor[PID], COMM_SUC);

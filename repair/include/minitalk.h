@@ -27,16 +27,19 @@ typedef struct s_packet
 	volatile sig_atomic_t	atompacket;
 }	t_packet;
 
-typedef enum e_signal_command
-{
-	SIG_RETRY = 3
-}	t_sigcmd;
-
 typedef enum e_bit_state
 {
 	BIT_OFF = 0,
 	BIT_ON = 1
 }	t_bits;
+
+typedef enum e_signal_parameter
+{
+	SERVER_DERAY = 450,
+	SEND_DERAY = 120,
+	RETRY_DELAY = 750,
+	SIG_RETRY = 3
+}	t_sigparam;
 
 typedef enum e_signal_state
 {
@@ -53,3 +56,11 @@ typedef enum e_signal_state
 // 	uint8_t					recv_count;
 // 	volatile sig_atomic_t	atompacket;
 // }	t_packet;
+
+// typedef enum e_signal_parameter
+// {
+// 	SEND_DERAY = 100, //us
+// 	SERVER_DERAY = 300, //us
+// 	RETRY_DELAY = 750, //us
+// 	SIG_RETRY = 3 
+// }	t_sigparam;

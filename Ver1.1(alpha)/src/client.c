@@ -28,7 +28,7 @@ static void	tobit(pid_t pid, uint8_t num)
 	size = sizeof(num) * 8;
 	while (size--)
 	{
-		usleep(10);
+		usleep(100);
 		if (num >> size & BIT_ON)
 			kill(pid, SIGUSR2);
 		else
@@ -51,7 +51,7 @@ int	main(int argc, char *argv[])
 	while (*argv[2])
 	{
 		tobit(pid, *argv[2]);
-		if (usleep(500) == 0)
+		if (usleep(15000) == 0)
 		{
 			ft_putstr_fd("pid error\n", STDERR_FILENO);
 			return (-1);

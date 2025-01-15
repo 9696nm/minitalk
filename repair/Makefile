@@ -20,7 +20,6 @@ LIBFT = libft
 LIBFTA = $(LIBFT)/libft.a
 
 SRC_DIR = src
-
 OBJ_DIR = obj
 CLIENT_OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(CRIENT_SRC_FILES))
 SERVER_OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SERVER_SRC_FILES))
@@ -39,7 +38,7 @@ $(SERVER): $(SERVER_OBJS) $(LIBFTA)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR) 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT):

@@ -39,7 +39,7 @@ static void	reception(void)
 {
 	if (g_stor.pid == 0)
 		pause();
-	if (usleep(150) == 0)
+	if (usleep(SERVER_DERAY) == 0)
 	{
 		g_stor.atompacket = 0;
 		if (g_stor.recv_count == 0)
