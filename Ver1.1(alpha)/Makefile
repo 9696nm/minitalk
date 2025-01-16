@@ -6,12 +6,15 @@
 #    By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/19 17:17:12 by hmori             #+#    #+#              #
-#    Updated: 2025/01/16 19:07:28 by hana/hmori       ###   ########.fr        #
+#    Updated: 2025/01/16 21:14:32 by hana/hmori       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude
+
+LEAK = -fsanitize=leak
+SEGFA = -fsanitize=address
 
 CRIENT_SRC_FILES = client.c
 SERVER_SRC_FILES = server.c
