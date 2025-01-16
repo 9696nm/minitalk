@@ -32,7 +32,7 @@ sig_atomic_t型って？
 
 
 test case
-				ft_putstr_fd("Client error.\n", STDOUT_FILENO);
+	python3 -c "print('UUUUUUUUUU' * 100)"
 
 
 Ver1.0 
@@ -91,3 +91,13 @@ Ver1.0
 			・落ちている
 			・sleep時間に問題がある
 			としてエラー表示を出した後タスクを終了(return (-1))
+
+Ver1.1 alpha
+	改善点
+	・	|	|	|	| と送られてくるときに
+		|	  |	|	| if文の前後が入れ替わってしまうほど短いスパンで情報を受け取ってしまうと反転しちゃうみたい
+	ので、送る間隔より短い間隔で受信した場合エラーとする事にした
+
+	・__attribute__((unused)) の追加
+	・構造体化
+	

@@ -6,28 +6,26 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:36:58 by hana/hmori        #+#    #+#             */
-/*   Updated: 2024/12/11 16:10:31 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/16 18:57:51 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
-static volatile sig_atomic_t	g_stor[3];
+static t_packet	g_stor;
 
-static void	signal_handler(int signum, siginfo_t *info, void *ucontext)
+static void	signal_handler(int signum, siginfo_t *info,
+	void *ucontext __attribute__((unused)))
 {
-	if (g_stor[COUNT] == 0)
-		g_stor[BIT] = 0;
-	g_stor[PID] = info->si_pid;
+	if (g_stor.recv_count == 0)
+		g_stor.packet = 0;
+	g_stor.pid = info->si_pid;
 	if (signum == SIGUSR1)
-		g_stor[BIT] = (g_stor[BIT] << 1) + BIT_OFF;
+		g_stor.packet = (g_stor.packet << 1) + BIT_OFF;
 	if (signum == SIGUSR2)
-		g_stor[BIT] = (g_stor[BIT] << 1) + BIT_ON;
-	if (++g_stor[COUNT] == 8)
-		ft_putchar_fd(g_stor[BIT], STDOUT_FILENO);
-	return ;
-	if (ucontext == NULL)
-		return ;
+		g_stor.packet = (g_stor.packet << 1) + BIT_ON;
+	if (++g_stor.recv_count == 8)
+		ft_putchar_fd(g_stor.packet, STDOUT_FILENO);
 }
 
 int	main(void)
@@ -41,74 +39,37 @@ int	main(void)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	g_stor[COUNT] = 0;
-	while (1)
+	g_stor.recv_count = 0;
+	while (g_stor.recv_count || pause())
 	{
-		if (g_stor[COUNT] == 0)
-			pause();
-		if (usleep(1500) == 0)
+		if (usleep(EXT_EARLY) && g_stor.recv_count != 8)
+			g_stor.recv_count = 9;
+		if (g_stor.recv_count == 8 || usleep(MAX_WAIT_TIME) == 0)
 		{
-			if (g_stor[COUNT] == 8)
-				kill(g_stor[PID], COMM_SUC);
+			if (g_stor.recv_count == 8)
+				kill(g_stor.pid, COMM_SUC);
 			else
-				kill(g_stor[PID], COMM_ERR);
-			g_stor[COUNT] = 0;
+				kill(g_stor.pid, COMM_ERR);
+			g_stor.recv_count = 0;
 		}
 	}
 	return (0);
 }
 
-// #include <fcntl.h>
+// static t_packet	g_stor;
 
-// static unsigned int	g_stor[4];
-
-// static void	ft_putbit(unsigned int num, unsigned long int size)
+// static void	signal_handler(int signum, siginfo_t *info,
+// 	void *ucontext __attribute__((unused)))
 // {
-// 	size *= 8;
-// 	while (size--)
-// 		ft_putchar_fd((num >> size & BIT_ON) + '0', g_stor[3]); //STDOUT_FILENEO
-// 	ft_putchar_fd('\n', g_stor[3]);
-// }
-
-// static void	signal_handler(int signum, siginfo_t *info, void *ucontext)
-// {
-// 	g_stor[PID] = info->si_pid;
+// 	if (g_stor.recv_count == 0)
+// 		g_stor.packet = 0;
+// 	g_stor.pid = info->si_pid;
 // 	if (signum == SIGUSR1)
-// 		g_stor[BIT] = (g_stor[BIT] << 1) + BIT_OFF;
+// 		g_stor.packet = (g_stor.packet << 1) + BIT_OFF;
 // 	if (signum == SIGUSR2)
-// 		g_stor[BIT] = (g_stor[BIT] << 1) + BIT_ON;
-// 	g_stor[COUNT]++;
-// 	ft_putnbr_fd(g_stor[COUNT], g_stor[3]);
-// 	ft_putchar_fd(':', g_stor[3]);
-// 	ft_putbit(g_stor[BIT], sizeof(g_stor[BIT]));
-// 	return ;
-// 	if (ucontext == NULL)
-// 		return ;
-// }
-
-// static void	receipt(void)
-// {
-// 	if (g_stor[COUNT] == 0)
-// 	{
-// 		pause();
-// 		ft_putstr_fd("conection\n", g_stor[3]);	
-// 	}
-// 	if (usleep(200))
-// 		ft_putstr_fd("signal\n", g_stor[3]);
-// 	else if (g_stor[COUNT] == 8)
-// 	{
-// 		ft_putchar_fd(g_stor[BIT], STDOUT_FILENO);
-// 		g_stor[BIT] = 0;
-// 		g_stor[COUNT] = 0;
-// 		kill(g_stor[PID], COMM_SUC);
-// 	}
-// 	else
-// 	{
-// 		ft_putstr_fd("timeout\n", g_stor[3]);
-// 		g_stor[BIT] = 0;
-// 		g_stor[COUNT] = 0;
-// 		kill(g_stor[PID], COMM_ERR);
-// 	}
+// 		g_stor.packet = (g_stor.packet << 1) + BIT_ON;
+// 	if (++g_stor.recv_count == 8)
+// 		ft_putchar_fd(g_stor.packet, STDOUT_FILENO);
 // }
 
 // int	main(void)
@@ -122,10 +83,25 @@ int	main(void)
 // 	sigemptyset(&sa.sa_mask);
 // 	sigaction(SIGUSR1, &sa, NULL);
 // 	sigaction(SIGUSR2, &sa, NULL);
-// 	g_stor[BIT] = 0;
-// 	g_stor[COUNT] = 0;
-// 	g_stor[3] = open("log/test.log", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-// 	while (1)
-// 		receipt();
+// 	g_stor.recv_count = 0;
+// 	while (g_stor.recv_count || pause())
+// 	{
+// 		if (usleep(EXT_EARLY) && g_stor.recv_count != 8)
+// 		{
+// 			g_stor.recv_count = 9;
+// 			ft_putchar_fd('-', STDOUT_FILENO);
+// 		}
+// 		if (g_stor.recv_count == 8 || usleep(MAX_WAIT_TIME) == 0)
+// 		{
+// 			if (g_stor.recv_count == 8)
+// 				kill(g_stor.pid, COMM_SUC);
+// 			else
+// 			{
+// 				ft_putchar_fd('+', STDOUT_FILENO);
+// 				kill(g_stor.pid, COMM_ERR);
+// 			}
+// 			g_stor.recv_count = 0;
+// 		}
+// 	}
 // 	return (0);
 // }
