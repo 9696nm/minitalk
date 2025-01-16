@@ -6,7 +6,7 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:24:08 by hana/hmori        #+#    #+#             */
-/*   Updated: 2025/01/16 18:41:00 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/16 19:03:07 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef enum e_signal_state
 
 typedef enum e_signal_parameter_micro_second
 {
-	EXT_EARLY = 15,
-	MAX_WAIT_TIME = 75,
+	EXT_EARLY = 20,
+	MAX_WAIT_TIME = 70,
 	SIGNAL_INTERVAL = 50,
 	PID_DETECTION = MAX_WAIT_TIME * 20
 }	t_sigparam_us;

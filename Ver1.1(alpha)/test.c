@@ -6,7 +6,7 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 23:03:47 by hana/hmori        #+#    #+#             */
-/*   Updated: 2025/01/16 18:42:26 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/16 19:02:37 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@ int	main(void)
 {
 	int	i;
 
+	ft_putbit('5', sizeof(uint8_t));
 	ft_putbit('U', sizeof(uint8_t));
-	ft_putbit('e', sizeof(uint8_t));
-	ft_putbit('Y', sizeof(uint8_t));
-	ft_putbit('S', sizeof(uint8_t));
-	ft_putbit('V', sizeof(uint8_t));
 	return (0);
 }
 
