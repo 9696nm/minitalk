@@ -6,11 +6,11 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:23:38 by hana/hmori        #+#    #+#             */
-/*   Updated: 2025/01/16 18:34:07 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/16 19:07:07 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "minitalk.h"
 
 static volatile sig_atomic_t	g_sig_state;
 

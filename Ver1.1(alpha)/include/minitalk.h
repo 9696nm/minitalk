@@ -6,14 +6,13 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:24:08 by hana/hmori        #+#    #+#             */
-/*   Updated: 2025/01/16 19:03:07 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/16 19:06:33 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# include <unistd.h>
 # include <stdint.h>
 # include <signal.h>
 

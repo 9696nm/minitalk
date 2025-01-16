@@ -6,11 +6,11 @@
 /*   By: hana/hmori <sagiri.mori@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:36:58 by hana/hmori        #+#    #+#             */
-/*   Updated: 2025/01/16 18:57:51 by hana/hmori       ###   ########.fr       */
+/*   Updated: 2025/01/16 19:11:41 by hana/hmori       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "minitalk.h"
 
 static t_packet	g_stor;
 
