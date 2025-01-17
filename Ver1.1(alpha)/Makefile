@@ -16,6 +16,7 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude
 LEAK = -fsanitize=leak
 SEGFA = -fsanitize=address
 
+INCLUDE = include/minitalk.h
 CRIENT_SRC_FILES = client.c
 SERVER_SRC_FILES = server.c
 
@@ -33,11 +34,11 @@ SERVER = server
 
 all: $(LIBFT) $(CLIENT) $(SERVER)
 
-$(CLIENT): $(CLIENT_OBJS) $(LIBFTA)
-	$(CC) $(CFLAGS) -o $@ $^
+$(CLIENT): $(CLIENT_OBJS) $(LIBFTA) $(INCLUDE)
+	$(CC) $(CFLAGS) -o $@ $(CLIENT_OBJS) $(LIBFTA)
 
-$(SERVER): $(SERVER_OBJS) $(LIBFTA)
-	$(CC) $(CFLAGS) -o $@ $^
+$(SERVER): $(SERVER_OBJS) $(LIBFTA) $(INCLUDE)
+	$(CC) $(CFLAGS) -o $@ $(SERVER_OBJS) $(LIBFTA)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)

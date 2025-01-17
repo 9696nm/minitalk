@@ -39,10 +39,26 @@ typedef enum e_signal_state
 
 typedef enum e_signal_parameter_micro_second
 {
-	EXT_EARLY = 20,
+	EXT_EARLY = 15,
 	MAX_WAIT_TIME = 70,
 	SIGNAL_INTERVAL = 50,
 	PID_DETECTION = MAX_WAIT_TIME * 20
 }	t_sigparam_us;
 
 #endif
+
+// typedef enum e_signal_parameter_micro_second //Ryzen 7 8850x
+// {
+// 	EXT_EARLY = 20,
+// 	MAX_WAIT_TIME = 70,
+// 	SIGNAL_INTERVAL = 50,
+// 	PID_DETECTION = MAX_WAIT_TIME * 20
+// }	t_sigparam_us;
+
+// typedef enum e_signal_parameter_micro_second //3F iMac
+// {
+// 	EXT_EARLY = 15,
+// 	MAX_WAIT_TIME = 70,
+// 	SIGNAL_INTERVAL = 50,
+// 	PID_DETECTION = MAX_WAIT_TIME * 20
+// }	t_sigparam_us;

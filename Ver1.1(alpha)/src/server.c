@@ -42,7 +42,7 @@ int	main(void)
 	g_stor.recv_count = 0;
 	while (g_stor.recv_count || pause())
 	{
-		if (usleep(EXT_EARLY) && g_stor.recv_count != 8)
+		if (0 < g_stor.recv_count && usleep(EXT_EARLY) && g_stor.recv_count < 8)
 			g_stor.recv_count = 9;
 		if (g_stor.recv_count == 8 || usleep(MAX_WAIT_TIME) == 0)
 		{
@@ -55,6 +55,9 @@ int	main(void)
 	}
 	return (0);
 }
+
+		// if (usleep(EXT_EARLY) && g_stor.recv_count != 8)
+		// if (g_stor.recv_count != 0 && usleep(EXT_EARLY))
 
 // static t_packet	g_stor;
 
@@ -86,7 +89,7 @@ int	main(void)
 // 	g_stor.recv_count = 0;
 // 	while (g_stor.recv_count || pause())
 // 	{
-// 		if (usleep(EXT_EARLY) && g_stor.recv_count != 8)
+// 		if (g_stor.recv_count != 0 && usleep(EXT_EARLY))
 // 		{
 // 			g_stor.recv_count = 9;
 // 			ft_putchar_fd('-', STDOUT_FILENO);
